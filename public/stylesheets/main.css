@@ -1,0 +1,25 @@
+.container{
+    margin-top: 20px;
+}
+.img-thumbnail img{
+    width:100%;
+}
+
+.img-thumbnail{ 
+    padding: 0;
+}
+
+.img-thumbnail .caption-full{
+    padding: 10px;  
+}
+
+.card{
+    margin-top: 30px;
+}
+.figure-caption{
+    font-size: 15px;
+}
+
+.delete-form {
+    display: inline;
+}
