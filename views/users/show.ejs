@@ -1,0 +1,51 @@
+<% include ../partials/header %>
+<div class="container">
+  <div class="row bg-light rounded-20" style="padding: 40px 10px;">
+    <div class="col-md-4">
+      <div class="text-center">
+        <h1 class="mx-auto">
+          <%= user.firstname + " " + user.lastname %>
+        </h1>
+        <img
+          class="img-thumbnail rounded mx-auto d-block"
+          src="<%= user.avatar %>"
+          alt="user profile"
+        />
+        <div class="caption mx-auto">
+          <a href="mailto:<%= user.email %>"><%= user.email %></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h1><%= user.firstname + "'s Campgrounds" %></h1>
+      <div class="list-group">
+        <a
+          href="#"
+          class="list-group-item list-group-item-action flex-column align-items-start"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Campground 1</h5>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="list-group-item list-group-item-action flex-column align-items-start"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Campground 2</h5>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="list-group-item list-group-item-action flex-column align-items-start"
+        >
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Campground 3</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <% include ../partials/footer %>
+</div>

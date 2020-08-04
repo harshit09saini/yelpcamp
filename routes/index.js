@@ -18,7 +18,14 @@ router.get("/register", function (req, res) {
 
 //Handle data from the form -- SIGNUP
 router.post("/register", function (req, res) {
-  var newUser = new User({ username: req.body.username });
+  var newUser = new User({
+    username: req.body.username,
+    lastname: req.body.lastname,
+    firstname: req.body.firstname,
+    avatar: req.body.avatar,
+    email: req.body.email,
+  });
+
   if (req.body.AdminCode === "WHOLIVESINAPINEAPPLEUNDERTHESEA") {
     newUser.isAdmin = true;
   }
@@ -29,7 +36,7 @@ router.post("/register", function (req, res) {
       return res.render("register");
     }
     passport.authenticate("local")(req, res, function () {
-      req.flash("success", "Welcome to YelpCamp, " + user.username);
+      req.flash("success", "Welcome to YelpCamp, " + User.username);
       res.redirect("/campgrounds");
     });
   });
@@ -55,6 +62,20 @@ router.get("/logout", function (req, res) {
   req.logout();
   req.flash("success", "Successfully Logged Out");
   res.redirect("/campgrounds");
+});
+
+//USER PROFILE ROUTE
+router.get("/user/:id", (req, res) => {
+  User.findById(req.params.id, function (err, foundUser) {
+    if (err) {
+      req.flash("error", "User Not Found");
+      res.redirect("/campgrounds");
+      s;
+    }
+    res.render("users/show", {
+      user: foundUser,
+    });
+  });
 });
 
 // MIDDLEWARE to check if a user is logged in or not
