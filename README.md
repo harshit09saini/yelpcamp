@@ -4,7 +4,8 @@
 
 ![Homepage](/assets/screen1.png)
 ![Details](/assets/screen2.png)
-![User](/assets/screen3.png)
+![User](/assets/screen4.png)
+![New Campground](/assets/screen3.png)
 
 ## Installation
 
