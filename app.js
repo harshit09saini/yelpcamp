@@ -15,7 +15,7 @@ var commentRoutes = require("./routes/comments");
 var indexRoutes = require("./routes/index");
 var flash = require("connect-flash");
 
-// seedDB();  // Seed the database everytime the server starts
+// seedDB(); // Seed the database everytime the server starts
 
 //USE FLASH
 app.use(flash());
@@ -25,7 +25,7 @@ app.use(
   require("express-session")({
     secret: "YelpCamp authentication woooooot",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
   })
 );
 
@@ -38,7 +38,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   res.locals.error = req.flash("error");
   res.locals.success = req.flash("success");
@@ -47,7 +47,7 @@ app.use(function(req, res, next) {
 
 //connect to the database
 mongoose.connect("mongodb://localhost:27017/yelpCamp", {
-  useNewUrlParser: true
+  useNewUrlParser: true,
 });
 
 mongoose.set("useFindAndModify", false);
@@ -66,7 +66,9 @@ app.use(campgroundRoutes);
 app.use(commentRoutes);
 
 //start the server
-app.listen("3000", function() {
+const PORT = process.env.PORT || 3000;
+console.log(PORT);
+app.listen(PORT, function () {
   console.log("Yelp Camp's Server Has Now Started.");
 });
 
